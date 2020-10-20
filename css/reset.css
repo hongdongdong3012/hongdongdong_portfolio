@@ -15,6 +15,12 @@
 	font-style: normal;
 }
 @font-face {
+	font-family: 'GmarketSansBold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
 	font-family: 'Noto Sans KR', sans-serif;
 	src:url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 }
@@ -29,9 +35,10 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 	font-size:100%;
 	vertical-align:baseline;
 	background:transparent;
-	font-family: 'GmarketSansMedium';
+	font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif;
 	line-height:1;
 	color:#222;
+	box-sizing: border-box;
 }
 article,aside,details,figcaption,figure, footer,header,hgroup,menu,nav,section{
 	display:block;
@@ -82,7 +89,9 @@ input, textarea{
 canvas {
 	width:100%;
 }
-
+.footer_hide_contents {
+	display:block;
+}
 
 /*===========================================================================
 	레이아웃
@@ -91,37 +100,51 @@ canvas {
 	width:100%;
 }
 #header {
-	position: sticky;
+	position: fixed;
 	top:0;
-  width: 100%;
-  height: 100vh;
+	display:flex;
+	justify-content: space-between;
+  width: 100vw;
+	padding:18px 80px;
+	z-index:100;
+	background:#1337b1;
+}
+#scroll-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 4px;
+	width: 0;
+	background-color: mintcream;
 }
 #main {
-	position: relative;
+	position: sticky;
 	top:0;
 	width: 100%;
-  padding: 120px 0;
+	height:auto;
   background: #fff;
 }
-#main .section {
+.section {
+	position: relative;
 	width:100%;
 	height:100vh;
-	padding:80px 0;
+	padding:120px 0;
+	background:#fff;
 }
 #footer {
 	position: relative;
+	display:flex;
+	justify-content: space-between;
 	top:0;
-  width: 100%;
-  height: 100vh;
-  background: #261b6d;
-  overflow: hidden;
+	padding:28px 80px;
+	width: 100%;
+	background:#fff;
 }
 /*===========================================================================
 	컨테이너
 ============================================================================*/
 .container {
-  width: 1400px;
-  height: inherit;
+  width: 1200px;
   margin: 0 auto;
 }
 
@@ -137,14 +160,106 @@ canvas {
 ============================================================================*/
 
 .sec_title {
-	font-size:36px;
+	font-size:40px;
 	text-align:left;
-	margin-bottom:80px;
+	margin-bottom:60px;
+	line-height:1;
+	font-family: 'GmarketSansBold';
 }
 .sec_text {
-	font-size:18px;
-	line-height:2.2;
-	color:#555;
-	font-weight:600;
+	font-size:24px;
+	line-height:1.5;
+	color:#999;
 	margin-top:24px;
+	font-family: 'GmarketSansLight';
+}
+.sec_text strong {
+  font-family: 'GmarketSansBold';
+  color: #1337b1;
+}
+.decorate_text {
+	font-size: 6.2vw;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #1338b1;
+	-webkit-text-fill-color: rgba(255, 255, 255,0);
+	font-family: 'GmarketSansBold';
+	line-height:1;
+}
+.decorate_text span {
+	display:inline-block;
+	margin-left:20px;
+	font-family: 'GmarketSansBold';
+	-webkit-text-fill-color : #1337b1;
+}
+
+html { scrollbar-arrow-color: #efefef;
+
+	scrollbar-Track-Color: #efefef; 
+	scrollbar-base-color: #dfdfdf;
+
+	scrollbar-Face-Color: #dfdfdf;
+
+	scrollbar-3dLight-Color: #dfdfdf;         
+	scrollbar-DarkShadow-Color: #dfdfdf;
+
+	scrollbar-Highlight-Color: #dfdfdf;
+
+	scrollbar-Shadow-Color: #dfdfdf}
+/* Chrome, Safari용 스크롤 바 */
+::-webkit-scrollbar {width: 12px; height: 10px;  }
+::-webkit-scrollbar-button:start:decrement, 
+::-webkit-scrollbar-button:end:increment {display: block; width: 12px;height: 12px; background: url() rgba(0,0,0,.05);}
+::-webkit-scrollbar-track {background: rgba(0,0,0,.05); }
+::-webkit-scrollbar-thumb {border-radius:4px;  background: rgba(19, 55, 177, .8);  }
+
+
+
+/*===========================================================================
+	media query
+============================================================================*/
+@media (max-width:1200px) {
+	.container {
+		width:100%;
+		padding:0 40px;
+	}
+
+}
+
+@media (max-width:768px){
+	.container {
+		width:100%;
+		padding:0 20px;
+	}
+	#header {
+		padding : 18px 20px;
+	}
+	.section {
+		padding:80px 0;
+	}
+	.decorate_text {
+		font-size:50px;
+	}
+	.sec_title {
+		font-size:24px;
+	}
+	.sec_text {
+		font-size:18px
+	}
+
+	.footer_hide_contents {
+		display:block;
+		margin-bottom:10px;
+	}
+}
+
+@media (max-width:480px){
+	.sec_title {
+		margin-bottom:48px;
+	}
+	.sec_text {
+		font-size:17px;
+	}
+	.decorate_text {
+    font-size: 34px;
+}
 }

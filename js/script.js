@@ -1,77 +1,54 @@
-(() => {
+(function () {
+  //헤더에 있는 스크롤바
+  window.onscroll = function () {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+
+      var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+      var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+      var contentHeight =  scrollHeight - clientHeight;
+      var scrollBar = (scrollTop / contentHeight) * 100;
+
+      document.getElementById('scroll-bar').style.width = scrollBar + '%';
+  };
   
-    // const actions = {
-    //   birdFlies(key) {
-    //     if(key) {
-    //       document.querySelector('[data-index="2"] .bird').style.transform=`translateX(${window.innerWidth}px)`;
-    //     }else {
-    //       document.querySelector('[data-index="2"] .bird').style.transform=`translateX(-100%)`;
-    //     }
-    //   },
-    //   birdFlies2(key) {
-    //     if(key) {
-    //       document.querySelector('[data-index="5"] .bird').style.transform=`translate(${window.innerWidth}px,${-window.innerHeight * 0.7}px )`;
-    //     }else {
-    //       document.querySelector('[data-index="5"] .bird').style.transform=`translateX(-100%)`;
-    //     }
-    //   }    
-    // }
+  // section2에 슬라이드 전체 width값 자동으로 구하기
+  const studyList = document.querySelector(".study_list");
+  const slideContent = document.querySelector(".slide_content");
+  const slideContents = document.querySelectorAll(".slide_content");
+  const slideContentLength = slideContents.length;
+  const slideContentWidth = slideContent.getBoundingClientRect().width;
+  console.log(slideContentWidth);
+
+  studyList.style.width = (slideContentWidth * slideContentLength) + (42 * slideContentLength)+ "px";
+
+  console.log(studyList.getBoundingClientRect().width)
+
+  // 팝업 생성 및 제거
+  const popup = document.querySelector('#popup_wrap');
+  const popClose = document.querySelector(".close_button");
+  const popupButton = document.querySelector('.button_area button');
+
+  const popupShow = () => {
+    popup.classList.remove("popup_hide");
+  }
+
+  const popupClose = () => {
+    popup.classList.add("popup_hide");
+  }
   
+
+  popup.classList.add("popup_hide");
+  popupButton.addEventListener("click", popupShow);
+  popClose.addEventListener("click", popupClose);
+
+  const projectContent = document.querySelector("#section3 .project_list .project_content")
+  const projectContentWidth =  projectContent.getBoundingClientRect().width;
   
-    const stepElements = document.querySelectorAll('.step');
-    const graphicElements = document.querySelectorAll('.graphic-item');
-    // 현재 활성화된 visible 클래스가 붙은 .graphic-item 지정하고 있는 변수
-    let currentItem = graphicElements[0]; 
-    let ioIndex;
+  projectContent.style.height = projectContentWidth;
   
-    const io = new IntersectionObserver((entries, observer) => {
-      ioIndex = entries[0].target.dataset.index * 1;
-    });
+  window.addEventListener('load', () => {
+    setTimeout(() => scrollTo(0, 0), 100);
+  });
   
-    for (let i = 0; i < stepElements.length; i++){
-      io.observe(stepElements[i])
-      // stepElements[i].setAttribute('data-index', i);
-      stepElements[i].dataset.index = i;
-      graphicElements[i].dataset.index = i;
-    }
-  
-    function activate(action) {
-      currentItem.classList.add('visible')
-    //   if(action)  {
-    //     actions[action](true);
-    //   }
-    }
-    function inactivate(action) {
-      currentItem.classList.remove('visible')  
-    //   if(action)  {
-    //     actions[action](false);
-    //   }
-    }
-  
-    window.addEventListener('scroll', () => {
-      let step;
-      let boundingRect;
-   
-      // for (let i = 0; i < stepElements.length; i++){
-        for (let i = ioIndex - 1; i < ioIndex + 2; i++){
-        step = stepElements[i];
-  
-        if(!step) continue;
-        boundingRect = step.getBoundingClientRect();
-        
-        if(boundingRect.top > window.innerHeight * 0.1 && boundingRect.top < window.innerHeight * 0.8) {
-  
-          inactivate();
-          currentItem = graphicElements[step.dataset.index]
-          activate(currentItem.dataset.action);
-        }
-      }
-    });
-  
-    window.addEventListener('load', () => {
-      setTimeout(() => scrollTo(0, 0), 100);
-    });
-  
-    activate();
-  
-  })();
+})();
