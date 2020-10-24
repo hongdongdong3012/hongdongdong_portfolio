@@ -89,9 +89,6 @@ input, textarea{
 canvas {
 	width:100%;
 }
-.footer_hide_contents {
-	display:block;
-}
 
 /*===========================================================================
 	레이아웃
@@ -246,9 +243,9 @@ html { scrollbar-arrow-color: #efefef;
 		font-size:18px
 	}
 
-	.footer_hide_contents {
+	#footer .contact_area a  {
 		display:block;
-		margin-bottom:10px;
+		margin:0 0 10px;
 	}
 }
 
@@ -261,5 +258,10 @@ html { scrollbar-arrow-color: #efefef;
 	}
 	.decorate_text {
     font-size: 34px;
+	}
 }
+@media (max-width:380px){
+	.decorate_text {
+    font-size: 30px;
+	}
 }

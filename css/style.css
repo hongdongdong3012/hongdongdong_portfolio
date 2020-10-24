@@ -172,7 +172,7 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
   height:100%;
 }
 #section2 h3.mention {
-  margin:20px 0 0 20px;
+  margin:20px 0 0 0;
   font-size:22px;
   color:#999;
 } 
@@ -344,11 +344,6 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
   font-family: 'GmarketSansBold';
   margin-right:20px;
 }
-#footer .copyright_area {
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-}
 #footer .copyright_area span {
   font-size: 20px;
   line-height: 1;
@@ -360,6 +355,7 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
   line-height: 1;
   color: #1337b1;
   font-family: 'GmarketSansMedium';
+  margin-right:20px;
 }
 
 /*===========================================================================
@@ -590,11 +586,11 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
   }
   #section4 .text img.left_quotes {
     width:30px;
-    left: 0; 
+    left: 20px; 
   }
   #section4 .text img.right_quotes {
     width:30px;
-    right: 0;
+    right: 20px;
   }
   #section4 .button_area button {
     display: inline-block;
@@ -609,6 +605,9 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
     position:initial;
     transform:initial;
     margin:20px 0;
+  }
+  #footer .contact_area a {
+    margin-left:0;
   }
   #popup_wrap {
     width:90%;
@@ -652,6 +651,7 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
     display:block;
     margin-left: 0px;
   }
+  
 }
 @media (max-width:530px) {
   #section2 .study_area .study_list li {
@@ -681,11 +681,32 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
   #section2 .decorate_text {
     top:-14px;
   }
+  #section2 h3.mention {
+    font-size:14px;
+  }
   #section3 .project_list .project_content a h2 {
     font-size:20px;
   }
   #section4 {
     padding:100px 0;
+  }
+  #section4 .text p {
+    font-size:18px;
+  }
+  #section4 .text img.left_quotes,#section4 .text img.right_quotes {
+    width:24px;
+  }
+  #section4 .arrow_area {
+    margin:40px 0;
+  }
+  #footer .contact_area a {
+    font-size: 18px;
+  }
+  #footer .copyright_area {
+    text-align:center;
+  }
+  #footer .copyright_area span {
+    font-size:16px;
   }
   #popup_wrap {
     padding: 40px 20px 0;
@@ -696,4 +717,5 @@ font-family: 'GmarketSansLight','GmarketSansMedium','GmarketSansBold',sans-serif
   #popup_wrap .text_area li {
     text-align:center;
   }
+
 }
